@@ -1,0 +1,9 @@
+{
+    // can get these following these instructions: https://github.com/ubahnverleih/WoBike/blob/master/Bird.md
+    "accessToken":"bird access token",
+    "refreshToken":"bird refresh token",
+    "GUID": "any unique guid",
+    //put your own latitude and longitude
+    "location": {"latitude":0,"longitude":0,"altitude":200,"accuracy":60,"speed":-1,"heading":-1},
+    "radius": 1000
+}
