@@ -47,6 +47,10 @@ function refreshToken(){
             }
             catch(e){ console.log(e) }
         });
+
+        response.on('error', function (error) {
+            console.log("token refresh error", error);
+        });
     });
 
     try{
@@ -85,6 +89,10 @@ function getBirds(){
             });
             console.log("Got latest bird data and wrote to: "+fileSavePath);
         });
+
+        response.on('error', function (error) {
+            console.log("bird fetch error", error);
+        });
     });
 }
 
@@ -93,5 +101,8 @@ const dataLogJob = schedule.scheduleJob('0 * * * * *', getBirds);
 
 //every 6 hours refresh auth token
 const refreshJob = schedule.scheduleJob('30 0 */6 * * *', refreshToken);
+
+//ignore network errors
+process.on('uncaughtException', (err) => console.log('Process Error: ', err));
 
 console.log("Running :)");
