@@ -92,6 +92,6 @@ function getBirds(){
 const dataLogJob = schedule.scheduleJob('0 * * * * *', getBirds);
 
 //every 6 hours refresh auth token
-const refreshJob = schedule.scheduleJob('0 */6 * * *', refreshToken);
+const refreshJob = schedule.scheduleJob('30 0 */6 * * *', refreshToken);
 
 console.log("Running :)");
