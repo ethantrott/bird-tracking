@@ -20,6 +20,7 @@ function refreshToken(){
             "Device-Id": config.GUID,
             "Platform": "ios",
             "App-Version": "4.119.0",
+	    "App-Name": "Bird",
             "Authorization": "Bearer "+config.refreshToken
         }
     }
@@ -71,6 +72,7 @@ function getBirds(){
             "Device-Id": config.GUID,
             "Platform": "ios",
             "App-Version": "4.119.0",
+	    "App-Name": "Bird",
             "Authorization": "Bearer "+config.accessToken,
             "Location": JSON.stringify(config.location)
         }
@@ -106,3 +108,4 @@ const refreshJob = schedule.scheduleJob('30 0 */6 * * *', refreshToken);
 process.on('uncaughtException', (err) => console.log('Process Error: ', err));
 
 console.log("Running :)");
+refreshToken();
