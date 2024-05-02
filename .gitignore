@@ -1,6 +1,8 @@
 data/*.json
 config.json
 
+package-lock.json
+
 # Logs
 logs
 *.log
