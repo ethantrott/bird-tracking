@@ -7,6 +7,8 @@ var fs = require("fs");
 
 const schedule = require('node-schedule');
 
+const sql = require('./sql-interact');
+
 var config = require("./config.json");
 
 function refreshToken(){
@@ -85,11 +87,15 @@ function getBirds(){
         });
 
         response.on('end', function () {
-            var fileSavePath = "data/"+new Date().toISOString()+".json";
+            const date = new Date().toISOString();
+            console.log("Processing: "+date);
+            var fileSavePath = "data/"+date+".json";
             fs.writeFile(fileSavePath, result, function (err) {
                 if (err) throw err;
             });
-            console.log("Got latest bird data and wrote to: "+fileSavePath);
+            console.log("Saved file.");
+
+            sql.uploadToDB(result, date);
         });
 
         response.on('error', function (error) {
@@ -108,4 +114,3 @@ const refreshJob = schedule.scheduleJob('30 0 */6 * * *', refreshToken);
 process.on('uncaughtException', (err) => console.log('Process Error: ', err));
 
 console.log("Running :)");
-refreshToken();
