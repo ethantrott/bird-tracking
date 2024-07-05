@@ -22,7 +22,7 @@ function refreshToken(){
             "Device-Id": config.GUID,
             "Platform": "ios",
             "App-Version": "4.119.0",
-	    "App-Name": "Bird",
+	        "App-Name": "Bird",
             "Authorization": "Bearer "+config.refreshToken
         }
     }
